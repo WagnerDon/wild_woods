@@ -1,0 +1,260 @@
+{
+ "sprites": [
+  {
+   "name": "skeleton",
+   "spriteHeight": 51,
+   "animations": [
+    {
+     "name": "idle",
+     "duration": 0.2,
+     "data": {
+      "url": "../assets/champions/skeleton/idle.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "walk",
+     "duration": 0.3,
+     "data": {
+      "url": "../assets/champions/skeleton/walk.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "attack",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/skeleton/attack.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack2",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/skeleton/attack2.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack3",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/skeleton/attack3.png",
+      "frameAmount": 6
+     }
+    },
+    {
+     "name": "death",
+     "duration": 0.2,
+     "data": {
+      "url": "../assets/champions/skeleton/death.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "hit",
+     "duration": 0.2,
+     "data": {
+      "url": "../assets/champions/skeleton/hit.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "shield",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/skeleton/shield.png",
+      "frameAmount": 4
+     }
+    }
+   ]
+  },
+  {
+   "name": "mushroom",
+   "spriteHeight": 37,
+   "animations": [
+    {
+     "name": "idle",
+     "duration": 0.2,
+     "data": {
+      "url": "../assets/champions/mushroom/idle.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "walk",
+     "duration": 0.1,
+     "data": {
+      "url": "../assets/champions/mushroom/walk.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack",
+     "duration": 0.1,
+     "data": {
+      "url": "../assets/champions/mushroom/attack.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack2",
+     "duration": 0.1,
+     "data": {
+      "url": "../assets/champions/mushroom/attack2.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack3",
+     "duration": 0.1,
+     "data": {
+      "url": "../assets/champions/mushroom/attack3.png",
+      "frameAmount": 11
+     }
+    },
+    {
+     "name": "death",
+     "duration": 0.3,
+     "data": {
+      "url": "../assets/champions/mushroom/death.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "hit",
+     "duration": 0.3,
+     "data": {
+      "url": "../assets/champions/mushroom/hit.png",
+      "frameAmount": 4
+     }
+    }
+   ]
+  },
+  {
+   "name": "goblin",
+   "spriteHeight": 36,
+   "animations": [
+    {
+     "name": "idle",
+     "duration": 0.2,
+     "data": {
+      "url": "../assets/champions/goblin/idle.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "walk",
+     "duration": 0.1,
+     "data": {
+      "url": "../assets/champions/goblin/walk.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/goblin/attack.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack2",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/goblin/attack2.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack3",
+     "duration": 0.2,
+     "data": {
+      "url": "../assets/champions/goblin/attack3.png",
+      "frameAmount": 12
+     }
+    },
+    {
+     "name": "death",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/goblin/death.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "hit",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/goblin/hit.png",
+      "frameAmount": 4
+     }
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "spriteHeight": 31,
+   "animations": [
+    {
+     "name": "idle",
+     "duration": 0.1,
+     "data": {
+      "url": "../assets/champions/eye/walk.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "walk",
+     "duration": 0.1,
+     "data": {
+      "url": "../assets/champions/eye/walk.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/eye/attack.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack2",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/eye/attack2.png",
+      "frameAmount": 8
+     }
+    },
+    {
+     "name": "attack3",
+     "duration": 0.15,
+     "data": {
+      "url": "../assets/champions/eye/attack3.png",
+      "frameAmount": 6
+     }
+    },
+    {
+     "name": "death",
+     "duration": 0.2,
+     "data": {
+      "url": "../assets/champions/eye/death.png",
+      "frameAmount": 4
+     }
+    },
+    {
+     "name": "hit",
+     "duration": 0.2,
+     "data": {
+      "url": "../assets/champions/eye/hit.png",
+      "frameAmount": 4
+     }
+    }
+   ]
+  }
+ ]
+}

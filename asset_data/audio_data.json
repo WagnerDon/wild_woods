@@ -1,0 +1,24 @@
+{
+ "audios": [
+  {
+   "name": "click",
+   "url": "../assets/audio/ui/button_click_2.mp3"
+  },
+  {
+   "name": "hover",
+   "url": "../assets/audio/ui/button_hover_2.mp3"
+  },
+  {
+   "name": "fade_in",
+   "url": "../assets/audio/ui/fade_in.mp3"
+  },
+  {
+   "name": "start",
+   "url": "../assets/audio/ui/start.mp3"
+  },
+  {
+   "name": "footstep",
+   "url": "../assets/audio/champions/footstep.mp3"
+  }
+ ]
+}

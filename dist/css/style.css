@@ -1,0 +1,348 @@
+:root {
+ --width: 1280;
+ --height: 720;
+}
+
+* {
+ margin: 0;
+ padding: 0;
+ border: none;
+ background: none;
+ outline: none;
+ user-select: none;
+ font-family: serif;
+ letter-spacing: calc(0.5vh * var(--width) / var(--height));
+}
+
+body {
+ display: grid;
+ height: 100vh;
+ background-color: black;
+}
+
+canvas {
+ width: calc(100vh * var(--width) / var(--height));
+ max-width: 100%;
+ opacity: 0;
+}
+
+/* Desktop */
+
+#hud {
+ position: absolute;
+ inset: 0;
+}
+
+#game-div {
+ margin: auto;
+ position: relative;
+ display: flex;
+ box-shadow: 0 0 calc(2vh * var(--width) / var(--height)) 0
+  rgba(255, 255, 255, 0.5);
+}
+
+/* main-menu */
+
+#main-menu {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+
+ height: 100%;
+
+ gap: calc(1vh * var(--width) / var(--height));
+
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ translate: -50% -50%;
+}
+
+#main-menu button {
+ color: white;
+ font-size: calc(4vh * var(--width) / var(--height));
+}
+
+/* head */
+
+#head {
+ position: absolute;
+
+ top: 0;
+ right: 0;
+ left: 0;
+
+ display: flex;
+
+ justify-content: space-between;
+}
+
+#head div {
+ display: flex;
+ font-size: calc(4vh * var(--width) / var(--height));
+ color: white;
+}
+
+#head .btn-9 {
+ min-width: 10%;
+ height: unset;
+}
+
+#head button {
+ color: white;
+ font-size: calc(4vh * var(--width) / var(--height));
+}
+
+#avatar {
+ font-size: calc(2vh * var(--width) / var(--height)) !important;
+ flex-direction: column;
+ padding: calc(2vh * var(--width) / var(--height));
+ align-items: center;
+ gap: calc(1vh * var(--width) / var(--height));
+ justify-content: center;
+}
+
+/* options */
+
+#options {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+
+ height: 100%;
+ width: max-content;
+
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ translate: -50% -50%;
+
+ gap: calc(1vh * var(--width) / var(--height));
+}
+
+#options button {
+ color: white;
+ font-size: calc(4vh * var(--width) / var(--height));
+}
+
+/* tutorial */
+
+#tutorial {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+
+ height: 100%;
+
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ translate: -50% -50%;
+
+ gap: calc(1vh * var(--width) / var(--height));
+
+ font-size: calc(2vh * var(--width) / var(--height));
+
+ color: white;
+
+ text-align: center;
+}
+
+#tutorial p {
+ gap: calc(1vh * var(--width) / var(--height));
+ height: 14%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: max-content;
+}
+
+#tutorial button {
+ font-size: calc(4vh * var(--width) / var(--height));
+ color: white;
+ width: max-content;
+}
+
+/* mobile */
+
+#mobile {
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ height: calc(10vh * var(--width) / var(--height));
+ display: flex;
+ align-items: center;
+}
+
+#mobile div {
+ display: flex;
+ align-items: center;
+ height: 100%;
+ width: 100%;
+}
+
+#mobile div button {
+ justify-content: center;
+ align-items: center;
+ display: flex;
+ color: white;
+ height: 100%;
+ width: 100%;
+ font-size: calc(7vh * 1280 / 720) !important;
+ animation: in ease-in-out 255ms;
+ opacity: 0.5;
+}
+
+#mobile button:hover {
+ animation: out ease-in-out 255ms forwards;
+}
+
+/* Utility */
+
+.absolute-space {
+ position: absolute;
+ inset: 0;
+}
+
+.health-bar-two {
+ position: absolute;
+ left: 50%;
+}
+
+.fade-in {
+ animation: fade-in 0.5s ease-in-out forwards;
+}
+
+.fade-out {
+ animation: fade-out 0.5s ease-in-out forwards;
+}
+
+.selected {
+ animation: in ease-in-out 255ms;
+ background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.utf-8 {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ letter-spacing: 0 !important;
+ animation: in ease-in-out 255ms;
+ scale: 0.9;
+ opacity: 0.5;
+}
+
+.utf-8:hover {
+ animation: out linear 255ms forwards;
+}
+
+.spin {
+ animation: spin linear 2s infinite !important;
+}
+
+/* Rotate */
+
+#rotate-device {
+ display: none;
+ background: radial-gradient(circle, rgb(30, 100, 255) 0%, rgb(0, 0, 0) 200%);
+
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ gap: 5rem;
+
+ position: absolute;
+ inset: 0;
+}
+
+#rotate-device p {
+ color: white;
+ font-size: 2rem;
+ text-align: center;
+}
+
+#img {
+ height: 10rem;
+}
+
+/* Media */
+
+@media (orientation: portrait) {
+ #game-div {
+  display: none;
+ }
+
+ #rotate-device {
+  display: flex;
+ }
+
+ #img {
+  animation: rotate ease-in-out infinite 3s;
+ }
+}
+
+/* Keyframes */
+
+@keyframes spin {
+ from {
+  rotate: 0deg;
+ }
+
+ to {
+  rotate: 360deg;
+ }
+}
+
+@keyframes out {
+ to {
+  scale: 1;
+  opacity: 1;
+ }
+}
+
+@keyframes in {
+ from {
+  scale: 1;
+  opacity: 1;
+ }
+}
+
+@keyframes fade-in {
+ from {
+  opacity: 0;
+ }
+
+ to {
+  opacity: 1;
+ }
+}
+
+@keyframes fade-out {
+ from {
+  opacity: 1;
+ }
+
+ to {
+  opacity: 0;
+ }
+}
+
+@keyframes rotate {
+ 0% {
+  rotate: 360deg;
+ }
+
+ 50% {
+  rotate: 270deg;
+ }
+
+ 70% {
+  rotate: 270deg;
+ }
+
+ 100% {
+  rotate: 360deg;
+ }
+}

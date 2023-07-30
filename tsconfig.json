@@ -1,0 +1,10 @@
+{
+ "compilerOptions": {
+  "target": "ES2015", // code
+  "module": "ES2015", // module system
+  "strict": true, // higher program correctness
+  "outDir": "./dist/js", // where to compile it to
+  "sourceMap": true // debug typescript code
+ },
+ "include": ["./src/**/*.ts"] // what files to compile
+}

@@ -1,0 +1,36 @@
+.btn-9 {
+ padding: 0 calc(2vh * var(--width) / var(--height));
+ opacity: 0.5;
+ height: 14%;
+ position: relative;
+ z-index: 1;
+ background: transparent;
+ transition: background-color 255ms ease-in-out;
+}
+
+.btn-9:before {
+ content: "";
+ width: 0%;
+ height: 100%;
+ position: absolute;
+ top: 0;
+ right: 50%;
+ background-color: rgba(255, 255, 255, 0.25);
+ transition: 255ms ease-in-out;
+ z-index: -1;
+}
+
+.btn-9:hover:before {
+ width: 100%;
+ right: 0%;
+ box-shadow: 0 0 calc(2vh * var(--width) / var(--height)) 0
+  rgba(255, 255, 255, 0.25);
+}
+
+.btn-9:hover {
+ animation: out ease-in-out 255ms forwards;
+}
+
+.btn-9:active {
+ opacity: 0.75;
+}

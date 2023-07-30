@@ -1,0 +1,22 @@
+.animated-progress {
+ width: calc(20vh * var(--width) / var(--height));
+ height: calc(1vh * var(--width) / var(--height));
+ border: calc(0.1vh * var(--width) / var(--height)) solid
+  rgba(255, 255, 255, 0.5);
+ position: relative;
+ box-shadow: 0 0 calc(2vh * var(--width) / var(--height)) 0
+  rgba(255, 255, 0, 0.25);
+}
+
+.animated-progress span {
+ height: 100%;
+ width: 100%;
+}
+
+.progress-blue span {
+ background-color: rgba(255, 0, 0, 0.5);
+}
+
+.progress-green span {
+ background-color: rgba(0, 255, 0, 0.5);
+}

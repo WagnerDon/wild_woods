@@ -1,5 +1,5 @@
-# JS_Game
-Native JavaScript Canvas Game in Pixel-Art style using free assets.
+# wild_woods
+
+Native JavaScript game written in TypeScript.
 
 Assets are used from:
-- Freepik

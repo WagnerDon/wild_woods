@@ -33,12 +33,30 @@ canvas {
  inset: 0;
 }
 
-#game-div {
+#content {
+ z-index: 1;
  margin: auto;
  position: relative;
  display: flex;
  box-shadow: 0 0 calc(2vh * var(--width) / var(--height)) 0
   rgba(255, 255, 255, 0.5);
+}
+
+/* rotate */
+
+#rotate-device {
+ position: absolute;
+ inset: 0;
+ flex-direction: column;
+ justify-content: center;
+ gap: 10vh;
+ display: none;
+ align-items: center;
+}
+
+#rotate-device p {
+ font-size: 5vw;
+ color: white;
 }
 
 /* main-menu */
@@ -242,35 +260,10 @@ canvas {
  animation: spin linear 2s infinite !important;
 }
 
-/* Rotate */
-
-#rotate-device {
- display: none;
- background: radial-gradient(circle, rgb(30, 100, 255) 0%, rgb(0, 0, 0) 200%);
-
- justify-content: center;
- align-items: center;
- flex-direction: column;
- gap: 5rem;
-
- position: absolute;
- inset: 0;
-}
-
-#rotate-device p {
- color: white;
- font-size: 2rem;
- text-align: center;
-}
-
-#img {
- height: 10rem;
-}
-
 /* Media */
 
 @media (orientation: portrait) {
- #game-div {
+ #content {
   display: none;
  }
 
@@ -278,8 +271,9 @@ canvas {
   display: flex;
  }
 
- #img {
+ #phone {
   animation: rotate ease-in-out infinite 3s;
+  width: 50vw;
  }
 }
 

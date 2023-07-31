@@ -6,65 +6,65 @@
    "animations": [
     {
      "name": "idle",
-     "duration": 0.2,
+     "url": "../assets/images/characters/skeleton/idle.png",
      "data": {
-      "url": "../assets/champions/skeleton/idle.png",
+      "duration": 0.2,
       "frameAmount": 4
      }
     },
     {
      "name": "walk",
-     "duration": 0.3,
+     "url": "../assets/images/characters/skeleton/walk.png",
      "data": {
-      "url": "../assets/champions/skeleton/walk.png",
+      "duration": 0.3,
       "frameAmount": 4
      }
     },
     {
      "name": "attack",
-     "duration": 0.15,
+     "url": "../assets/images/characters/skeleton/attack.png",
      "data": {
-      "url": "../assets/champions/skeleton/attack.png",
+      "duration": 0.15,
       "frameAmount": 8
      }
     },
     {
      "name": "attack2",
-     "duration": 0.15,
+     "url": "../assets/images/characters/skeleton/attack2.png",
      "data": {
-      "url": "../assets/champions/skeleton/attack2.png",
+      "duration": 0.15,
       "frameAmount": 8
      }
     },
     {
      "name": "attack3",
-     "duration": 0.15,
+     "url": "../assets/images/characters/skeleton/attack3.png",
      "data": {
-      "url": "../assets/champions/skeleton/attack3.png",
+      "duration": 0.15,
       "frameAmount": 6
      }
     },
     {
      "name": "death",
-     "duration": 0.2,
+     "url": "../assets/images/characters/skeleton/death.png",
      "data": {
-      "url": "../assets/champions/skeleton/death.png",
+      "duration": 0.2,
       "frameAmount": 4
      }
     },
     {
      "name": "hit",
-     "duration": 0.2,
+     "url": "../assets/images/characters/skeleton/hit.png",
      "data": {
-      "url": "../assets/champions/skeleton/hit.png",
+      "duration": 0.2,
       "frameAmount": 4
      }
     },
     {
      "name": "shield",
-     "duration": 0.15,
+     "url": "../assets/images/characters/skeleton/shield.png",
      "data": {
-      "url": "../assets/champions/skeleton/shield.png",
+      "duration": 0.15,
       "frameAmount": 4
      }
     }
@@ -76,57 +76,57 @@
    "animations": [
     {
      "name": "idle",
-     "duration": 0.2,
+     "url": "../assets/images/characters/mushroom/idle.png",
      "data": {
-      "url": "../assets/champions/mushroom/idle.png",
+      "duration": 0.2,
       "frameAmount": 4
      }
     },
     {
      "name": "walk",
-     "duration": 0.1,
+     "url": "../assets/images/characters/mushroom/walk.png",
      "data": {
-      "url": "../assets/champions/mushroom/walk.png",
+      "duration": 0.1,
       "frameAmount": 8
      }
     },
     {
      "name": "attack",
-     "duration": 0.1,
+     "url": "../assets/images/characters/mushroom/attack.png",
      "data": {
-      "url": "../assets/champions/mushroom/attack.png",
+      "duration": 0.1,
       "frameAmount": 8
      }
     },
     {
      "name": "attack2",
-     "duration": 0.1,
+     "url": "../assets/images/characters/mushroom/attack2.png",
      "data": {
-      "url": "../assets/champions/mushroom/attack2.png",
+      "duration": 0.1,
       "frameAmount": 8
      }
     },
     {
      "name": "attack3",
-     "duration": 0.1,
+     "url": "../assets/images/characters/mushroom/attack3.png",
      "data": {
-      "url": "../assets/champions/mushroom/attack3.png",
+      "duration": 0.1,
       "frameAmount": 11
      }
     },
     {
      "name": "death",
-     "duration": 0.3,
+     "url": "../assets/images/characters/mushroom/death.png",
      "data": {
-      "url": "../assets/champions/mushroom/death.png",
+      "duration": 0.3,
       "frameAmount": 4
      }
     },
     {
      "name": "hit",
-     "duration": 0.3,
+     "url": "../assets/images/characters/mushroom/hit.png",
      "data": {
-      "url": "../assets/champions/mushroom/hit.png",
+      "duration": 0.3,
       "frameAmount": 4
      }
     }
@@ -138,57 +138,57 @@
    "animations": [
     {
      "name": "idle",
-     "duration": 0.2,
+     "url": "../assets/images/characters/goblin/idle.png",
      "data": {
-      "url": "../assets/champions/goblin/idle.png",
+      "duration": 0.2,
       "frameAmount": 4
      }
     },
     {
      "name": "walk",
-     "duration": 0.1,
+     "url": "../assets/images/characters/goblin/walk.png",
      "data": {
-      "url": "../assets/champions/goblin/walk.png",
+      "duration": 0.1,
       "frameAmount": 8
      }
     },
     {
      "name": "attack",
-     "duration": 0.15,
+     "url": "../assets/images/characters/goblin/attack.png",
      "data": {
-      "url": "../assets/champions/goblin/attack.png",
+      "duration": 0.15,
       "frameAmount": 8
      }
     },
     {
      "name": "attack2",
-     "duration": 0.15,
+     "url": "../assets/images/characters/goblin/attack2.png",
      "data": {
-      "url": "../assets/champions/goblin/attack2.png",
+      "duration": 0.15,
       "frameAmount": 8
      }
     },
     {
      "name": "attack3",
-     "duration": 0.2,
+     "url": "../assets/images/characters/goblin/attack3.png",
      "data": {
-      "url": "../assets/champions/goblin/attack3.png",
+      "duration": 0.2,
       "frameAmount": 12
      }
     },
     {
      "name": "death",
-     "duration": 0.15,
+     "url": "../assets/images/characters/goblin/death.png",
      "data": {
-      "url": "../assets/champions/goblin/death.png",
+      "duration": 0.15,
       "frameAmount": 4
      }
     },
     {
      "name": "hit",
-     "duration": 0.15,
+     "url": "../assets/images/characters/goblin/hit.png",
      "data": {
-      "url": "../assets/champions/goblin/hit.png",
+      "duration": 0.15,
       "frameAmount": 4
      }
     }
@@ -200,57 +200,57 @@
    "animations": [
     {
      "name": "idle",
-     "duration": 0.1,
+     "url": "../assets/images/characters/eye/walk.png",
      "data": {
-      "url": "../assets/champions/eye/walk.png",
+      "duration": 0.1,
       "frameAmount": 8
      }
     },
     {
      "name": "walk",
-     "duration": 0.1,
+     "url": "../assets/images/characters/eye/walk.png",
      "data": {
-      "url": "../assets/champions/eye/walk.png",
+      "duration": 0.1,
       "frameAmount": 8
      }
     },
     {
      "name": "attack",
-     "duration": 0.15,
+     "url": "../assets/images/characters/eye/attack.png",
      "data": {
-      "url": "../assets/champions/eye/attack.png",
+      "duration": 0.15,
       "frameAmount": 8
      }
     },
     {
      "name": "attack2",
-     "duration": 0.15,
+     "url": "../assets/images/characters/eye/attack2.png",
      "data": {
-      "url": "../assets/champions/eye/attack2.png",
+      "duration": 0.15,
       "frameAmount": 8
      }
     },
     {
      "name": "attack3",
-     "duration": 0.15,
+     "url": "../assets/images/characters/eye/attack3.png",
      "data": {
-      "url": "../assets/champions/eye/attack3.png",
+      "duration": 0.15,
       "frameAmount": 6
      }
     },
     {
      "name": "death",
-     "duration": 0.2,
+     "url": "../assets/images/characters/eye/death.png",
      "data": {
-      "url": "../assets/champions/eye/death.png",
+      "duration": 0.2,
       "frameAmount": 4
      }
     },
     {
      "name": "hit",
-     "duration": 0.2,
+     "url": "../assets/images/characters/eye/hit.png",
      "data": {
-      "url": "../assets/champions/eye/hit.png",
+      "duration": 0.2,
       "frameAmount": 4
      }
     }

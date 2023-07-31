@@ -23,23 +23,19 @@ body {
 canvas {
  width: calc(100vh * var(--width) / var(--height));
  max-width: 100%;
- opacity: 0;
 }
 
 /* Desktop */
 
-#hud {
+#user-interface {
  position: absolute;
  inset: 0;
 }
 
 #content {
- z-index: 1;
  margin: auto;
  position: relative;
  display: flex;
- box-shadow: 0 0 calc(2vh * var(--width) / var(--height)) 0
-  rgba(255, 255, 255, 0.5);
 }
 
 /* rotate */

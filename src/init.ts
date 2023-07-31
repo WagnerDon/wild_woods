@@ -1,3 +1,5 @@
+import Game from "./classes/Game.js";
+
 const mainCanvas = document.createElement("canvas");
 mainCanvas.id = "main-canvas";
 mainCanvas.width = 1280;
@@ -26,4 +28,15 @@ documentFragment.append(content, rotateDevice);
 
 const body = document.body;
 body.append(documentFragment);
-onload = () => body.removeAttribute("style");
+
+const mainCanvasCtx = mainCanvas.getContext("2d", { alpha: false });
+if (mainCanvasCtx) mainCanvasCtx.imageSmoothingEnabled = false;
+else {
+ alert("This browser is not supported!");
+ new Error(`Error: ${mainCanvasCtx}`);
+}
+
+onload = () => {
+ body.removeAttribute("style");
+ new Game(mainCanvasCtx);
+};

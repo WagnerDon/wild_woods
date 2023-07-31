@@ -1,9 +1,15 @@
-import { GameScreen } from "./gameScreen.js";
-import { SETTINGS } from "./ui.js";
-import { GameWorld } from "./gameWorld.js";
-import { CollisionHandler } from "./utility/collisionHandler.js";
+// import { GameScreen } from "./gameScreen.js";
+// import { SETTINGS } from "./ui.js";
+// import { GameWorld } from "./gameWorld.js";
+// import { CollisionHandler } from "./utility/collisionHandler.js";
 
-export class Game {
+export default class Game {
+ constructor(ctx: CanvasRenderingContext2D) {
+  this.mainCtx = ctx;
+ }
+
+ mainCtx: CanvasRenderingContext2D;
+
  loopInfo = {
   targetFps: 30,
   previousTimestamp: 0,
@@ -19,14 +25,6 @@ export class Game {
  screens: GameScreen[] = [];
 
  gameWorld: GameWorld | undefined;
-
- constructor() {
-  try {
-   this.init();
-  } catch {
-   window.location.reload();
-  }
- }
 
  init() {
   const canvas = document.getElementById("canvas");

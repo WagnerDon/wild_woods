@@ -26,4 +26,4 @@ documentFragment.append(content, rotateDevice);
 
 const body = document.body;
 body.append(documentFragment);
-body.removeAttribute("style");
+onload = () => body.removeAttribute("style");

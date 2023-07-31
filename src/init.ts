@@ -30,13 +30,13 @@ const body = document.body;
 body.append(documentFragment);
 
 const mainCanvasCtx = mainCanvas.getContext("2d", { alpha: false });
-if (mainCanvasCtx) mainCanvasCtx.imageSmoothingEnabled = false;
-else {
+if (!mainCanvasCtx) {
  alert("This browser is not supported!");
  new Error(`Error: ${mainCanvasCtx}`);
 }
+mainCanvasCtx!.imageSmoothingEnabled = false;
 
 onload = () => {
  body.removeAttribute("style");
- new Game(mainCanvasCtx);
+ new Game(mainCanvasCtx!);
 };

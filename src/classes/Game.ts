@@ -1,94 +1,50 @@
-// import { GameScreen } from "./gameScreen.js";
-// import { SETTINGS } from "./ui.js";
-// import { GameWorld } from "./gameWorld.js";
-// import { CollisionHandler } from "./utility/collisionHandler.js";
+import { shared } from "../shared.js";
+import GameWorld from "./GameWorld.js";
 
 export default class Game {
- constructor(ctx: CanvasRenderingContext2D) {
-  this.mainCtx = ctx;
- }
-
- mainCtx: CanvasRenderingContext2D;
-
- loopInfo = {
-  targetFps: 30,
-  previousTimestamp: 0,
- };
-
- canvasOptions = {
-  alpha: false,
- };
-
- canvas: HTMLCanvasElement | undefined;
- context: CanvasRenderingContext2D | undefined;
-
- screens: GameScreen[] = [];
-
- gameWorld: GameWorld | undefined;
-
- init() {
-  const canvas = document.getElementById("canvas");
-
-  if (!(canvas instanceof HTMLCanvasElement))
-   throw new Error(`${canvas} is not of type canvas`);
-
+ constructor({ canvas, ctx }: shared.CanvasData) {
   this.canvas = canvas;
-  const ctx = this.canvas.getContext("2d", this.canvasOptions);
-
-  if (!(ctx instanceof CanvasRenderingContext2D))
-   throw new Error(`Creating context ${ctx} failed`);
-
-  this.context = ctx;
-  this.context.imageSmoothingEnabled = false;
-
-  if (SETTINGS.twoPlayer) {
-   const width = this.canvas.width / 2;
-   this.screens = [
-    new GameScreen(canvas, this.context, { width: width }),
-    new GameScreen(canvas, this.context, { x: width, width: width }),
-   ];
-  } else this.screens.push(new GameScreen(canvas, this.context));
-
-  this.loopLogic = this.loopLogic.bind(this);
-  this.loop();
-
-  this.gameWorld = new GameWorld();
+  this.ctx = ctx;
+  this.world = new GameWorld(canvas);
+  this.loop = this.loop.bind(this);
+  requestAnimationFrame(this.loop);
  }
 
- clearCanvas() {
-  this.context?.clearRect(
-   0,
-   0,
-   this.canvas?.width ?? 0,
-   this.canvas?.height ?? 0
-  );
- }
+ canvas: HTMLCanvasElement;
+ ctx: CanvasRenderingContext2D;
+ world: GameWorld;
 
- exe(deltaTime: number) {
-  const gameObjects = this.gameWorld?.gameObjects;
-  if (!gameObjects) throw new Error(`${gameObjects} does not exist`);
-  for (let l = gameObjects.length - 1; l > -1; l--)
-   gameObjects[l].logic(deltaTime);
-  CollisionHandler.checkForCollisions(gameObjects);
-  this.clearCanvas();
-  this.screens.forEach((screen) => screen.update(gameObjects));
- }
+ loopData: shared.LoopData = {
+  frameInterval: 1000 / 30,
+  previousTimestamp: undefined,
+ };
 
- loopLogic(currentTimestamp: number) {
-  const loopInfo = this.loopInfo;
-  const elapsedTime = currentTimestamp - loopInfo.previousTimestamp;
-  if (elapsedTime > loopInfo.targetFps) {
-   loopInfo.previousTimestamp =
-    currentTimestamp - (elapsedTime % loopInfo.targetFps);
+ loop(currentTimestamp: number) {
+  const frameInterval = this.loopData.frameInterval;
+  const elapsedTime =
+   currentTimestamp - (this.loopData.previousTimestamp ?? currentTimestamp);
+  if (elapsedTime > frameInterval) {
+   this.loopData.previousTimestamp =
+    currentTimestamp - (elapsedTime % frameInterval);
    const deltaTime = elapsedTime / 1000;
-   this.exe(deltaTime);
+   this.update(deltaTime);
   }
-  if (!SETTINGS.pause) {
-   requestAnimationFrame(this.loopLogic);
-  }
+  requestAnimationFrame(this.loop);
  }
 
- loop() {
-  requestAnimationFrame(this.loopLogic);
+ update(deltaTime: number) {
+  this.world.entities.forEach((entity) => entity.update(deltaTime));
+  this.world.players.forEach((player) =>
+   player.screen.update({
+    x: player.entity.x,
+    y: player.entity.y,
+    width: player.entity.width,
+    height: player.entity.height,
+   })
+  );
+  this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  this.world.players.forEach((player) =>
+   player.screen.draw(this.ctx, this.world.entities)
+  );
  }
 }

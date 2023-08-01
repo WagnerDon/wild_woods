@@ -1,46 +1,35 @@
-import { Position, Screen, AnyGameObject } from "./interfaces.js";
+import { shared } from "../shared.js";
 
-export class GameScreen {
- screen: Screen;
-
- context: CanvasRenderingContext2D;
-
- viewport: Position = { x: 0, y: 0 };
-
- constructor(
-  canvas: HTMLCanvasElement,
-  context: CanvasRenderingContext2D,
-  screen?: Partial<Screen>
- ) {
-  this.context = context;
-  this.screen = {
-   x: 0,
-   y: 0,
-   width: canvas.width,
-   height: canvas.height,
-   ...screen,
-  };
+export default class GameScreen {
+ constructor({ x, y, width, height }: shared.BoundingBox) {
+  this.position = { x, y };
+  this.measure = { width, height };
+  this.viewport = { x: 0, y: 0 };
  }
 
- update(gameObjects: AnyGameObject[]) {
-  this.context.save();
+ position: shared.Coordinate;
+ measure: shared.Dimension;
+ viewport: shared.Coordinate;
 
-  this.context.beginPath();
-  this.context.rect(
-   this.screen.x,
-   this.screen.y,
-   this.screen.width,
-   this.screen.height
-  );
-  this.context.clip();
+ update({ x, y, width, height }: shared.BoundingBox) {
+  this.viewport.x = x + width / 2 - this.measure.width / 2;
+  this.viewport.y = y + height / 2 - this.measure.height / 2;
+ }
 
-  this.context.translate(
-   this.screen.x + this.viewport.x,
-   this.screen.y + this.viewport.y
-  );
+ draw(ctx: CanvasRenderingContext2D, arr: any[]) {
+  const positionX = this.position.x;
+  const positionY = this.position.y;
 
-  for (let x = 0, l = gameObjects.length; x < l; x++) gameObjects[x].draw(this);
+  ctx.save();
 
-  this.context.restore();
+  ctx.beginPath();
+  ctx.rect(positionX, positionY, this.measure.width, this.measure.height);
+  ctx.clip();
+
+  ctx.translate(positionX + this.viewport.x, positionY + this.viewport.y);
+
+  arr.forEach((entity) => entity.draw());
+
+  ctx.restore();
  }
 }

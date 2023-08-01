@@ -1,16 +1,15 @@
 import Game from "./classes/Game.js";
 
-const mainCanvas = document.createElement("canvas");
-mainCanvas.id = "main-canvas";
-mainCanvas.width = 1280;
-mainCanvas.height = 720;
+const canvas = document.createElement("canvas");
+canvas.width = 1280;
+canvas.height = 720;
 
 const userInterface = document.createElement("div");
 userInterface.id = "user-interface";
 
 const content = document.createElement("div");
 content.id = "content";
-content.append(mainCanvas, userInterface);
+content.append(canvas, userInterface);
 
 const paragraph = document.createElement("p");
 paragraph.textContent = "Rotate Your Device";
@@ -29,14 +28,17 @@ documentFragment.append(content, rotateDevice);
 const body = document.body;
 body.append(documentFragment);
 
-const mainCanvasCtx = mainCanvas.getContext("2d", { alpha: false });
-if (!mainCanvasCtx) {
+let ctx = canvas.getContext("2d", { alpha: false });
+if (!ctx) {
  alert("This browser is not supported!");
- new Error(`Error: ${mainCanvasCtx}`);
+ new Error(`Error: ${ctx}`);
 }
-mainCanvasCtx!.imageSmoothingEnabled = false;
+ctx = ctx as CanvasRenderingContext2D;
+ctx.imageSmoothingEnabled = false;
+
+const canvasData = { canvas, ctx };
 
 onload = () => {
  body.removeAttribute("style");
- new Game(mainCanvasCtx!);
+ new Game(canvasData);
 };

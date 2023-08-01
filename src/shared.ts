@@ -1,4 +1,38 @@
-import { GameObject } from "./objects/gameObject.js";
+import GameScreen from "./classes/GameScreen.js";
+
+export * as shared from "./shared.js";
+
+export interface BoundingBox extends Coordinate, Dimension {}
+
+export interface Dimension {
+ width: number;
+ height: number;
+}
+
+export interface Coordinate {
+ x: number;
+ y: number;
+}
+
+export interface PlayerData {
+ entity: any;
+ screen: GameScreen;
+ keys: any;
+}
+
+export interface LoopData {
+ frameInterval: number;
+ previousTimestamp: number | undefined;
+}
+
+export interface CanvasData {
+ canvas: HTMLCanvasElement;
+ ctx: CanvasRenderingContext2D;
+}
+
+// export * from "./shared.js";
+
+/* import { GameObject } from "./objects/gameObject.js";
 import { StaticObject } from "./objects/staticObject.js";
 import { AnimatedObject } from "./objects/animatedObject.js";
 import { ChampionObject } from "./objects/championObject.js";
@@ -53,4 +87,4 @@ export interface Keys {
 
  //Temporary
  cycle: string;
-}
+} */

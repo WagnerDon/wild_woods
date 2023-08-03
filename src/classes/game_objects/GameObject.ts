@@ -1,44 +1,34 @@
-import { Game } from "../game.js";
-import { GameScreen } from "../gameScreen.js";
-import { Position, Measure } from "../interfaces.js";
+import { shared } from "../../shared";
 
-export class GameObject {
- image: HTMLImageElement | undefined;
- position: Position = { x: 0, y: 0 };
- measure: Measure = { width: 100, height: 100 };
-
- constructor(
-  image?: HTMLImageElement,
-  position?: Partial<Position>,
-  measure?: Partial<Measure>
- ) {
+export default class GameObject {
+ constructor(boundingBox: shared.BoundingBox, image?: HTMLImageElement) {
+  this.boundingBox = boundingBox;
   this.image = image;
-  Object.assign(this.position, position);
-  Object.assign(this.measure, measure);
+  this.color = `rgb(${this.colorNumber()},${this.colorNumber()},${this.colorNumber()})`;
  }
 
- draw(_screen?: GameScreen) {
+ boundingBox: shared.BoundingBox;
+ color: string;
+ image: HTMLImageElement | undefined;
+
+ draw(ctx: CanvasRenderingContext2D) {
   if (!this.image) {
-   console.error(`There is no image assigned to ${this}!`);
-   this.drawRectangle();
+   this.drawRectangle(ctx);
    return;
   }
-  Game.context.drawImage(
-   this.image,
-   this.position.x,
-   this.position.y,
-   this.measure.width,
-   this.measure.height
-  );
+
+  const { x, y, width, height } = this.boundingBox;
+
+  ctx.drawImage(this.image, x, y, width, height);
  }
 
- drawRectangle() {
-  Game.context.fillStyle = "magenta";
-  Game.context.fillRect(
-   this.position.x,
-   this.position.y,
-   this.measure.width,
-   this.measure.height
-  );
+ colorNumber() {
+  return Math.floor(Math.random() * 256);
+ }
+
+ drawRectangle(ctx: CanvasRenderingContext2D) {
+  const { x, y, width, height } = this.boundingBox;
+  ctx.fillStyle = this.color;
+  ctx.fillRect(x, y, width, height);
  }
 }

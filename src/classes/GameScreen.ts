@@ -1,35 +1,58 @@
 import { shared } from "../shared.js";
 
 export default class GameScreen {
- constructor({ x, y, width, height }: shared.BoundingBox) {
-  this.position = { x, y };
-  this.measure = { width, height };
+ constructor(object: any, boundingBox: shared.BoundingBox) {
+  this.boundingBox = boundingBox;
   this.viewport = { x: 0, y: 0 };
+  this.object = object;
  }
 
- position: shared.Coordinate;
- measure: shared.Dimension;
+ object: any;
  viewport: shared.Coordinate;
+ boundingBox: shared.BoundingBox;
 
- update({ x, y, width, height }: shared.BoundingBox) {
-  this.viewport.x = x + width / 2 - this.measure.width / 2;
-  this.viewport.y = y + height / 2 - this.measure.height / 2;
+ lockViewport(deltaTime: number) {
+  const { x, y, width, height } = this.object.boundingBox;
+  const { x: vx, y: vy } = this.viewport;
+  const { width: sWidth, height: sHeight } = this.boundingBox;
+  const objectCenterX = x + width / 2;
+  const objectCenterY = y + height / 2;
+  const viewportCenterX = vx + sWidth / 2;
+  const viewportCenterY = vy + sHeight / 2;
+  const differenceX = objectCenterX - viewportCenterX;
+  const differenceY = objectCenterY - viewportCenterY;
+
+  const speed = 200 * deltaTime;
+
+  const moving = Math.abs(differenceX) + Math.abs(differenceY) > 0;
+  if (!moving) return;
+
+  if (differenceX > 0)
+   this.viewport.x += Math.abs(differenceX) < 10 ? 1 : speed;
+  else if (differenceX < 0)
+   this.viewport.x -= Math.abs(differenceX) < 10 ? 1 : speed;
+
+  if (differenceY > 0)
+   this.viewport.y += Math.abs(differenceY) < 10 ? 1 : speed;
+  else if (differenceY < 0)
+   this.viewport.y -= Math.abs(differenceY) < 10 ? 1 : speed;
  }
 
- draw(ctx: CanvasRenderingContext2D, arr: any[]) {
-  const positionX = this.position.x;
-  const positionY = this.position.y;
+ draw(objects: any[], ctx: CanvasRenderingContext2D) {
+  const { x, y, width, height } = this.boundingBox;
+
+  ctx.strokeStyle = "red";
+  ctx.lineWidth = 3;
+  ctx.strokeRect(x, y, width, height);
 
   ctx.save();
-
   ctx.beginPath();
-  ctx.rect(positionX, positionY, this.measure.width, this.measure.height);
+  ctx.rect(x, y, width, height);
   ctx.clip();
 
-  ctx.translate(positionX + this.viewport.x, positionY + this.viewport.y);
+  ctx.translate(x - this.viewport.x, y - this.viewport.y);
 
-  arr.forEach((entity) => entity.draw());
-
+  objects.forEach((object) => object.draw(ctx));
   ctx.restore();
  }
 }

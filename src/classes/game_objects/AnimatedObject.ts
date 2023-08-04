@@ -4,17 +4,17 @@ import { Position, Sprite, Measure, Animation } from "../interfaces.js";
 import { GameScreen } from "../gameScreen.js";
 
 export class AnimatedObject extends GameObject {
-   sprite: Sprite;
-   spriteHeight: number;
-   scaleFactor: number;
-  scaledHeight = 0;
-  scaledWidth = 0;
-  frameIndex = 0;
-  frameTime = 0;
-  frameWidth = 0;
-  frameAmount = 0;
-  animationDuration = 0;
-  currentAnimation: string | undefined;
+ sprite: Sprite;
+ spriteHeight: number;
+ scaleFactor: number;
+ scaledHeight = 0;
+ scaledWidth = 0;
+ frameIndex = 0;
+ frameTime = 0;
+ frameWidth = 0;
+ frameAmount = 0;
+ animationDuration = 0;
+ currentAnimation: string | undefined;
 
  constructor(
   sprite: Sprite,
@@ -32,7 +32,7 @@ export class AnimatedObject extends GameObject {
   this.nextFrame(deltaTime);
  }
 
-  nextFrame(deltaTime: number) {
+ nextFrame(deltaTime: number) {
   this.frameTime += deltaTime;
   if (this.frameTime <= this.animationDuration) return;
   this.frameIndex = (this.frameIndex + 1) % this.frameAmount;
@@ -67,22 +67,7 @@ export class AnimatedObject extends GameObject {
   this.drawObjectBounds();
  }
 
-  cullObject(screen: GameScreen) {
-  const viewportX = screen.viewport.x;
-  const viewportY = screen.viewport.y;
-  const viewportWidth = screen.screen.width + viewportX;
-  const viewportHeight = screen.screen.height + viewportY;
-  const objectX = this.position.x;
-  const objectY = this.position.y;
-  const objectWidth = objectX + this.measure.width;
-  const objectHeight = objectY + this.measure.height;
-  const conditionX = objectWidth < viewportX || objectX > viewportWidth;
-  if (conditionX) return true;
-  const conditionY = objectHeight < viewportY || objectY > viewportHeight;
-  return conditionY;
- }
-
-  drawSpriteBounds(spriteX: number, spriteY: number) {
+ drawSpriteBounds(spriteX: number, spriteY: number) {
   Game.context.strokeStyle = "green";
   Game.context.lineWidth = 2;
   Game.context.strokeRect(
@@ -93,7 +78,7 @@ export class AnimatedObject extends GameObject {
   );
  }
 
-  drawObjectBounds() {
+ drawObjectBounds() {
   Game.context.strokeStyle = "red";
   Game.context.lineWidth = 2;
   Game.context.strokeRect(
@@ -104,7 +89,7 @@ export class AnimatedObject extends GameObject {
   );
  }
 
-  set setAnimation(name: string) {
+ set setAnimation(name: string) {
   const animations = this.sprite.animations;
   if (!(name in animations)) {
    if (name === "default") name = Object.keys(animations)[0];
@@ -120,7 +105,7 @@ export class AnimatedObject extends GameObject {
   this.scaledWidth = this.frameWidth * this.scaleFactor;
  }
 
-  set setFrameData(animation: Animation) {
+ set setFrameData(animation: Animation) {
   this.frameIndex = 0;
   this.frameTime = 0;
   this.frameAmount = animation.frameAmount;

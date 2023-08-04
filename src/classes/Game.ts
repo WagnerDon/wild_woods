@@ -3,6 +3,7 @@ import GameController from "./GameController.js";
 import GameScreen from "./GameScreen.js";
 import GameWorld from "./GameWorld.js";
 import GameObject from "./game_objects/GameObject.js";
+import Culler from "./utility/Culler.js";
 import InputLogger from "./utility/InputLogger.js";
 
 export default class Game {
@@ -75,9 +76,5 @@ export default class Game {
   });
 
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-  players.forEach((player) => {
-   player.screen.draw(this.world.objects.reverse(), this.ctx);
-  });
  }
 }

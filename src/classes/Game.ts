@@ -3,7 +3,6 @@ import GameController from "./GameController.js";
 import GameScreen from "./GameScreen.js";
 import GameWorld from "./GameWorld.js";
 import GameObject from "./game_objects/GameObject.js";
-import Culler from "./utility/Culler.js";
 import InputLogger from "./utility/InputLogger.js";
 
 export default class Game {

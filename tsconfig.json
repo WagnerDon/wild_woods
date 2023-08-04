@@ -1,10 +1,9 @@
 {
+ "extends": "@tsconfig/recommended/tsconfig.json",
  "compilerOptions": {
-  "target": "ES2015", // es version
-  "module": "ES2015", // module system
-  "strict": true, // higher program correctness
-  "outDir": "./dist/js", // where to compile it to
-  "sourceMap": true // helps to debug ts code
+  "target": "ES2015",
+  "module": "ES2015",
+  "outDir": "./dist/js"
  },
- "include": ["./src/**/*.ts"] // what files to compile
+ "include": ["./src/**/*.ts"]
 }

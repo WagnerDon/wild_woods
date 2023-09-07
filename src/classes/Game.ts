@@ -1,79 +1,110 @@
+import { auxiliary } from "../auxiliary.js";
 import { shared } from "../shared.js";
-import GameController from "./GameController.js";
-import GameScreen from "./GameScreen.js";
-import GameWorld from "./GameWorld.js";
-import GameObject from "./game_objects/GameObject.js";
-import InputLogger from "./utility/InputLogger.js";
+import Loop from "./Loop.js";
+import Screen from "./Screen.js";
+import ScreenManager from "./ScreenManager.js";
 
 export default class Game {
- constructor({ canvas, ctx }: shared.CanvasData) {
-  this.canvas = canvas;
-  this.ctx = ctx;
-  this.players = this.createPlayers(canvas);
-  this.world = new GameWorld(this.players);
-  this.inputLogger = new InputLogger();
-  this.loop = this.loop.bind(this);
-  requestAnimationFrame(this.loop);
- }
-
- players: shared.PlayerData[];
- inputLogger: InputLogger;
- canvas: HTMLCanvasElement;
- ctx: CanvasRenderingContext2D;
- world: GameWorld;
-
- createPlayers(canvas: HTMLCanvasElement) {
-  const boundingBox_1 = { x: 20, y: 10, width: 100, height: 100 };
-  const boundingBox_2 = { x: 100, y: 120, width: 100, height: 100 };
-  const { width, height } = { width: canvas.width / 2, height: canvas.height };
-  const keys_1 = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
-  const keys_2 = ["KeyA", "KeyD", "KeyW", "KeyS"];
-  const object_1 = new GameObject(boundingBox_1);
-  const object_2 = new GameObject(boundingBox_2);
-
-  const playerData_1 = {
-   id: 0,
-   screen: new GameScreen(object_1, { x: width, y: 0, width, height }),
-   controller: new GameController({ id: 0, keys: keys_1, object: object_1 }),
-   object: object_1,
-  };
-
-  const playerData_2 = {
-   id: 1,
-   screen: new GameScreen(object_2, { x: 0, y: 0, width, height }),
-   controller: new GameController({ id: 1, keys: keys_2, object: object_2 }),
-   object: object_2,
-  };
-
-  return [playerData_1, playerData_2];
- }
-
- loopData: shared.LoopData = {
-  frameInterval: 1000 / 100,
-  previousTimestamp: undefined,
- };
-
- loop(currentTimestamp: number) {
-  const frameInterval = this.loopData.frameInterval;
-  const elapsedTime =
-   currentTimestamp - (this.loopData.previousTimestamp ?? currentTimestamp);
-  this.loopData.previousTimestamp =
-   currentTimestamp - (elapsedTime % frameInterval);
-  if (elapsedTime > frameInterval) {
-   const deltaTime = elapsedTime / 1000;
-   this.update(deltaTime);
+  constructor({
+    canvas,
+    ctx,
+  }: {
+    canvas: HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
+  }) {
+    this.canvas = canvas;
+    this.ctx = ctx;
+    this.loop = new Loop(this);
+    this.screenManager = new ScreenManager(
+      { w: canvas.width, h: canvas.height },
+      true
+    );
   }
-  requestAnimationFrame(this.loop);
- }
 
- update(deltaTime: number) {
-  const players = this.players;
+  screenManager: ScreenManager;
+  loop: Loop;
+  ctx: CanvasRenderingContext2D;
+  canvas: HTMLCanvasElement;
 
-  players.forEach((player) => {
-   player.controller.forceControl(this.inputLogger, deltaTime);
-   player.screen.lockViewport(deltaTime);
-  });
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
 
-  this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
- }
+  update(deltaTime: number) {
+    // update screens
+    // this.updateScreens(deltaTime);
+
+    // clear canvas
+    this.clearCanvas();
+
+    // draw screens
+    // this.drawScreens();
+  }
 }
+
+// temporary objects
+const objectA = {
+  boundingBox: {
+    x: 0,
+    y: 0,
+    w: 50,
+    h: 50,
+  },
+  draw: (ctx: CanvasRenderingContext2D) => {
+    ctx.fillStyle = "orange";
+    ctx.fillRect(
+      objectA.boundingBox.x,
+      objectA.boundingBox.y,
+      objectA.boundingBox.w,
+      objectA.boundingBox.h
+    );
+  },
+};
+
+const objectB = {
+  boundingBox: {
+    x: 0,
+    y: 0,
+    w: 50,
+    h: 50,
+  },
+  draw: (ctx: CanvasRenderingContext2D) => {
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(
+      objectB.boundingBox.x,
+      objectB.boundingBox.y,
+      objectB.boundingBox.w,
+      objectB.boundingBox.h
+    );
+  },
+};
+
+// temporary event listener
+onkeydown = (e) => {
+  switch (e.code) {
+    case "ArrowLeft":
+      objectA.boundingBox.x -= 50;
+      break;
+    case "ArrowRight":
+      objectA.boundingBox.x += 50;
+      break;
+    case "ArrowUp":
+      objectA.boundingBox.y -= 50;
+      break;
+    case "ArrowDown":
+      objectA.boundingBox.y += 50;
+      break;
+    case "KeyA":
+      objectB.boundingBox.x -= 50;
+      break;
+    case "KeyD":
+      objectB.boundingBox.x += 50;
+      break;
+    case "KeyW":
+      objectB.boundingBox.y -= 50;
+      break;
+    case "KeyS":
+      objectB.boundingBox.y += 50;
+      break;
+  }
+};

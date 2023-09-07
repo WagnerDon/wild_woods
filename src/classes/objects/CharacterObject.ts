@@ -1,12 +1,12 @@
 import { AnimatedObject } from "./animatedObject.js";
 import { Position, Measure, Sprite } from "../interfaces.js";
-import { GameScreen } from "../gameScreen.js";
+import { GameScreen } from "../components/GameScreen.js";
 import { Game } from "../game.js";
 
 export class ChampionObject extends AnimatedObject {
-  mirrored = false;
-  velocity: Position = { x: 0, y: 0 };
-   stats: { [key: string]: number } = {
+ mirrored = false;
+ velocity: Position = { x: 0, y: 0 };
+ stats: { [key: string]: number } = {
   hp: 10,
   strength: 1,
   speed: 3,
@@ -27,17 +27,17 @@ export class ChampionObject extends AnimatedObject {
   this.defaultAnimations();
  }
 
-  mirror() {
+ mirror() {
   const velocityX = this.velocity.x;
   if (velocityX !== 0) this.mirrored = velocityX < 0;
  }
 
-  updatePosition(deltaTime: number) {
+ updatePosition(deltaTime: number) {
   this.position.x += this.velocity.x * deltaTime;
   this.position.y += this.velocity.y * deltaTime;
  }
 
-  defaultAnimations() {
+ defaultAnimations() {
   const animation = this.currentAnimation;
   const inMotion = this.velocity.x !== 0;
   const idle = animation === "idle";
@@ -80,7 +80,7 @@ export class ChampionObject extends AnimatedObject {
   this.drawObjectBounds();
  }
 
-  drawSpriteBounds(spriteX: number, spriteY: number) {
+ drawSpriteBounds(spriteX: number, spriteY: number) {
   Game.context.strokeStyle = "green";
   Game.context.lineWidth = 2;
   Game.context.strokeRect(
@@ -91,13 +91,13 @@ export class ChampionObject extends AnimatedObject {
   );
  }
 
-  set save(condition: boolean) {
+ set save(condition: boolean) {
   if (!condition) return;
   Game.context.save();
   Game.context.scale(-1, 1);
  }
 
-  set restore(condition: boolean) {
+ set restore(condition: boolean) {
   if (!condition) return;
   Game.context.restore();
  }

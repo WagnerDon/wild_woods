@@ -22,10 +22,6 @@ export default class GameObject {
   ctx.drawImage(this.image, x, y, width, height);
  }
 
- colorNumber() {
-  return Math.floor(Math.random() * 256);
- }
-
  drawRectangle(ctx: CanvasRenderingContext2D) {
   const { x, y, width, height } = this.boundingBox;
   ctx.fillStyle = this.color;

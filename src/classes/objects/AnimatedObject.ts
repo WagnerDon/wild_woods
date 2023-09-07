@@ -1,7 +1,7 @@
 import { GameObject } from "./gameObject.js";
 import { Game } from "../game.js";
 import { Position, Sprite, Measure, Animation } from "../interfaces.js";
-import { GameScreen } from "../gameScreen.js";
+import { GameScreen } from "../components/GameScreen.js";
 
 export class AnimatedObject extends GameObject {
  sprite: Sprite;

@@ -1,4 +1,4 @@
-import { shared } from "../shared.js";
+import { shared } from "../../shared.js";
 
 export default class GameWorld {
  constructor(players: shared.PlayerData[]) {

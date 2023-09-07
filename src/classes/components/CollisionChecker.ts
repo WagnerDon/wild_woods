@@ -1,18 +1,31 @@
-import { AnyGameObject, CollisionSide, Screen } from "../interfaces.js";
-import { AnimatedObject } from "../objects/animatedObject.js";
-import { ChampionObject } from "../objects/championObject.js";
+import { shared } from "../../shared.js";
 
-export class CollisionHandler {
- static checkForCollisions(gameObjects: AnyGameObject[]) {
-  for (let i = 0, l = gameObjects.length; i < l; i++) {
-   const objectA = gameObjects[i];
+export class CollisionChecker {
+ collision(
+  { x: ax, y: ay, width: aWidth, height: aHeight }: shared.BoundingBox,
+  { x: bx, y: by, width: bWidth, height: bHeight }: shared.BoundingBox
+ ) {
+  const isALeftSmallerBRight = ax < bx + bWidth;
+  if (!isALeftSmallerBRight) return false;
+  const isARightBiggerBLeft = ax + aWidth > bx;
+  if (!isARightBiggerBLeft) return false;
+  const isATopSmallerBBottom = ay < by + bHeight;
+  if (!isATopSmallerBBottom) return false;
+  const isABottomBiggerBTop = ay + aHeight > by;
+  if (!isABottomBiggerBTop) return false;
+  return true;
+ }
+
+ /* checkForCollisions(objects: any[]) {
+  for (let i = 0, l = objects.length; i < l; i++) {
+   const objectA = objects[i];
    const {
     position: { x, y },
     measure: { width, height },
    } = objectA;
    const objectAData = { x, y, width, height };
    for (let p = i + 1; p < l; p++) {
-    const objectB = gameObjects[p];
+    const objectB = objects[p];
     const {
      position: { x, y },
      measure: { width, height },
@@ -24,27 +37,9 @@ export class CollisionHandler {
     CollisionHandler.handleCollision(side, objectA, objectB);
    }
   }
- }
+ } */
 
- static handleCollision(
-  side: CollisionSide,
-  caller: ChampionObject,
-  object: ChampionObject
- ) {
-  switch (side) {
-   case CollisionSide.Top:
-    caller.velocity;
-    break;
-   case CollisionSide.Left:
-    break;
-   case CollisionSide.Bottom:
-    break;
-   case CollisionSide.Right:
-    break;
-  }
- }
-
- static collidingSide(boxA: Screen, boxB: Screen): CollisionSide {
+ /* collidingSide(boxA: Screen, boxB: Screen): CollisionSide {
   const centerBoxAX = boxA.x + boxA.width / 2;
   const centerBoxBX = boxB.x + boxB.width / 2;
   const centerBoxAY = boxA.y + boxA.height / 2;
@@ -85,17 +80,5 @@ export class CollisionHandler {
    console.warn("No collision detected...?");
    return CollisionSide.None;
   }
- }
-
- static isColliding(boxA: Screen, boxB: Screen) {
-  const isALeftSmallerBRight = boxA.x < boxB.x + boxB.width;
-  if (!isALeftSmallerBRight) return false;
-  const isARightBiggerBLeft = boxA.x + boxA.width > boxB.x;
-  if (!isARightBiggerBLeft) return false;
-  const isATopSmallerBBottom = boxA.y < boxB.y + boxB.height;
-  if (!isATopSmallerBBottom) return false;
-  const isABottomBiggerBTop = boxA.y + boxA.height > boxB.y;
-  if (!isABottomBiggerBTop) return false;
-  return true;
- }
+ } */
 }

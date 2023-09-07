@@ -1,18 +1,17 @@
-import { shared } from "../shared.js";
+import { shared } from "../../shared.js";
 
 export default class GameScreen {
- constructor(object: any, boundingBox: shared.BoundingBox) {
+ constructor(boundingBox: shared.BoundingBox) {
   this.boundingBox = boundingBox;
   this.viewport = { x: 0, y: 0 };
-  this.object = object;
  }
 
  object: any;
  viewport: shared.Coordinate;
  boundingBox: shared.BoundingBox;
 
- lockViewport(deltaTime: number) {
-  const { x, y, width, height } = this.object.boundingBox;
+ lockViewport(deltaTime: number, boundingBox: any) {
+  const { x, y, width, height } = boundingBox;
   const { x: vx, y: vy } = this.viewport;
   const { width: sWidth, height: sHeight } = this.boundingBox;
   const objectCenterX = x + width / 2;

@@ -1,5 +1,5 @@
-import { shared } from "../shared.js";
-import InputLogger from "./utility/InputLogger.js";
+import { shared } from "../../shared.js";
+import InputLogger from "./InputLogger.js";
 
 export default class GameController {
  constructor({ id, keys, object }: shared.ControllerData) {
